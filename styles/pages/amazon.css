@@ -132,6 +132,10 @@
   border-radius: 50px;
  }
 
+ .added-to-cart-visible {
+  opacity: 1;
+ }
+
  select {
   color: rgb(33, 33, 33);
   background-color: rgb(240, 240, 240);
