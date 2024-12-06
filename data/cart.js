@@ -1,4 +1,10 @@
-export let cart = JSON.parse(localStorage.getItem('cart'));
+export let cart;
+
+loadFromStorage();
+
+
+export function loadFromStorage() {
+  cart = JSON.parse(localStorage.getItem('cart'));
 
 if (!cart) {
  cart = [{
@@ -12,6 +18,7 @@ deliveryOptionId: '2'
 }];
 }
 
+}
 
 function saveToStorage() {
   localStorage.setItem('cart', JSON.stringify(cart));
@@ -25,10 +32,23 @@ function saveToStorage() {
       matchingItem = cartItem;
     }
    });
+   
 
    const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
 
+   /*if (!quantitySelector) {
+    console.error(`Quantity selector for product ${productId} not found.`);
+    return;
+  }
+    */
+
    const quantity = Number(quantitySelector.value);
+  /*
+   if (isNaN(quantity) || quantity <= 0) {
+    console.error(`Invalid quantity for product ${productId}: ${quantity}`);
+    return;
+  }
+    */
 
    if (matchingItem) {
     matchingItem.quantity += 1;
@@ -36,7 +56,7 @@ function saveToStorage() {
     cart.push({
       productId,
       quantity,
-      deliveryOptionId: '1'
+      deliveryOptionId
      });
    }
 
