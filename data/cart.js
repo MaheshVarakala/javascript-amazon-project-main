@@ -36,19 +36,10 @@ function saveToStorage() {
 
    const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
 
-   /*if (!quantitySelector) {
-    console.error(`Quantity selector for product ${productId} not found.`);
-    return;
-  }
-    */
+   
 
    const quantity = Number(quantitySelector.value);
-  /*
-   if (isNaN(quantity) || quantity <= 0) {
-    console.error(`Invalid quantity for product ${productId}: ${quantity}`);
-    return;
-  }
-    */
+  
 
    if (matchingItem) {
     matchingItem.quantity += 1;
