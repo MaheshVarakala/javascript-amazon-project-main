@@ -34,20 +34,16 @@ function saveToStorage() {
    });
    
 
-   const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
-
    
-
-   const quantity = Number(quantitySelector.value);
   
 
    if (matchingItem) {
     matchingItem.quantity += 1;
    } else {
     cart.push({
-      productId,
-      quantity,
-      deliveryOptionId
+      productId: productId,
+      quantity: 1,
+      deliveryOptionId: '1'
      });
    }
 
@@ -77,6 +73,7 @@ export function calculateCartQuantity() {
 
   return cartQuantity;
 }
+  
 
 export function updateDeliveryOption(productId, deliveryOptionId) {
   let matchingItem;
@@ -103,4 +100,11 @@ export function loadCart(fun) {
 
   xhr.open('GET', 'https://supersimplebackend.dev/cart');
   xhr.send();
+}
+
+export async function loadCartFetch() {
+  const response = await fetch('https://supersimplebackend.dev/cart');
+  const text = await response.text();
+  console.log(text);
+  return text;
 }
